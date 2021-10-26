@@ -22,9 +22,8 @@ function downloadAmazonJava {
     Write-Host "** Amazon Java Install Script **" -ForegroundColor cyan -BackgroundColor black
 
     $uri = "https://corretto.aws/downloads/latest/amazon-corretto-8-x64-windows-jdk.msi"
-    $outfile = "C:\Windows\Temp\amazonjava.msi"
 
-    Invoke-WebRequest -Uri $uri -Outfile $outfile 
+    Invoke-WebRequest -Uri $uri -Outfile "C:\Windows\Temp\amazonjava.msi"
 }
 
 function installAmazonJava {
@@ -32,7 +31,7 @@ function installAmazonJava {
 
     Write-Host "** Starting Installation of Amazon Java **" -ForegroundColor cyan -BackgroundColor black
 
-    Start-Process msiexec.exe -Wait -ArgumentList '/i $outfile /quiet'
+    Start-Process msiexec.exe -Wait -ArgumentList '/i C:\Windows\Temp\amazonjava.msi /quiet'
 }
 
 uninstall
